@@ -1,0 +1,247 @@
+<html>
+
+<head>
+    <title>My Crops | farmer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/x.css">
+    <link rel="stylesheet" href="static/css/scroll_bar.css">
+    <link rel="stylesheet" href="static/css/other.css">
+    <link rel="stylesheet" href="static/css/loader.css">
+    <link rel="stylesheet" href="static/css/css">
+    <link rel="stylesheet" href="static/css/chip.css">
+    <link rel="stylesheet" href="static/css/dropzone.css">
+    <link rel="stylesheet" href="static/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="id02" class="x-modal" style="padding:0px;">
+        <div class="x-modal-content x-animate-right" style="width: 100vw;height: 147vh;margin:0px">
+            <header class="stretchable x-xlarge" style="height: 103px;">
+                <div class="x-left"
+                    style="display:flex; flex-direction: row; z-index: 3; align-items: center; margin-top: 50px; font-size: 20; width: 100%;">
+                    <span class="fa fa-arrow-left x-padding" onclick="document.getElementById('id02').style.display='none'"></span>
+                    <b>Add Crop</b>
+                </div>
+            </header>
+            <div class="x-container" style="padding-bottom: 130px;">
+                <div class="x-padding">
+                    <label style="font-size: 16;">Crop Name
+                        <span class="x-text-red">*</span>
+                        <br>
+                        <input class="x-center x-padding-large x-round-large x-block"
+                            style="margin-top: 8px; max-width: 100%; max-height: 100%;" list="Crops"
+                            name="Choose Crops" /></label>
+                    <span class="x-align-left">
+                        <datalist id="Crops">
+                            <option value="Egg Plant">
+                            <option value="Bitter Gourd">
+                            <option value="Carrot">
+                            <option value="Onion">
+                            <option value="Lady Finger">
+                            <option value="Broccoli">
+                        </datalist></span>
+                </div>
+                <div class="x-padding">
+                    <label style="font-size: 16;">Variety
+                        <span class="x-text-red">*</span>
+                        <br>
+                        <input class="x-center x-padding-large x-round-large x-block"
+                            style="margin-top: 8px; max-width: 100%; max-height: 100%;" list="Variety"
+                            name="Variety" /></label>
+                    <span class="x-align-left">
+                        <datalist id="Variety">
+                            <option value="Morena F1">
+                            <option value="Calixto">
+                        </datalist></span>
+                </div>
+                <div class="x-padding">
+                    <span>Seed Provider</span>
+                    <span class="x-text-red">*</span>
+                    <input type="text" class="x-input x-border x-round-large x-padding x-block"
+                        style="max-width: 100%; margin-top: 10px; max-height: 100%; ">
+                </div>
+                <div class="x-padding">
+                    <span>Farm Size(sqm)</span>
+                    <span class="x-text-red">*</span>
+                    <input type="number" class="x-input x-border x-round-large x-padding x-block"
+                        style="max-width: 100%; margin-top: 10px; max-height: 100%; ">
+                </div>
+                <div class="x-padding">
+                    <span>Number of Hills</span>
+                    <span class="x-text-red">*</span>
+                    <input type="number" class="x-input x-border x-round-large x-padding x-block"
+                        style="max-width: 100%; margin-top: 10px; max-height: 100%; ">
+                </div>
+                <div class="x-padding x-col s6">
+                    <span>Sowing Date</span>
+                    <span class="x-text-red">*</span>
+                    <input type="date" class="x-input x-border x-round-large smallpadding x-block x-left"
+                        style="max-width: 100%; margin-top: 10px; max-height: 100%;  font-size: 12;">
+                </div>
+                <div class="x-padding x-col s6">
+                    <span>Transplant date</span>
+                    <span class="x-text-red">*</span>
+                    <input type="date" class="x-input x-border x-round-large smallpadding x-block x-left"
+                        style="max-width: 100%; margin-top: 10px; max-height: 100%;  font-size: 12;">
+                </div>
+                <div class="x-padding">
+                    <span>Expected Harvest Date</span>
+                    <span class="x-text-red">*</span>
+                    <input type="date" class="x-input x-border x-round-large smallpadding x-block x-left"
+                        style="max-width: 100%; margin-top: 10px; max-height: 100%;  font-size: 12;">
+                </div>
+                <br>
+                <br>
+                <div class="x-padding" style="margin-top: 20px;">
+                    <button class="x-button x-round-xlarge x-center x-padding x-green x-block stretchable" type="button"
+                        style="height: auto;">
+                        <b>ADD CROP</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="id01" class="x-modal" style="padding:0px;">
+        <div class="x-modal-content x-animate-right" style="width: 100vw;height: 100vh;margin:0px">
+            <div>
+                <div>
+                    <header class="stretchable x-xlarge" style="height: 103px;">
+                        <div class="x-left"
+                            style="display:flex; flex-direction: row; z-index: 3; align-items: center; margin-top: 50px; font-size: 20; width: 100%;">
+                            <span class="fa fa-arrow-left x-padding"
+                                onclick="document.getElementById('id01').style.display='none'"></span>
+                            <b>Crop Details</b>
+                        </div>
+                    </header>
+                    <div class="x-padding x-center">
+                        <div class="x-padding x-card x-round-large x-center"
+                            style="font-size: 14; height: 210px; margin-top: 15px; max-width: 100%; max-height: 100%;">
+                            <div style="font-size: 16; font-weight: bold; max-width: 100%;">
+                                <div style="width: 100%;">
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: bold;">Egg Plant</span>
+                                    <span class="x-right x-small-padding" style="margin-left: 10px; font-size: 14;">15
+                                        Oct 2021</span>
+                                    <br>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: normal;">Variety:</span>
+                                        <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: bold; color: #339933;">Morena F1</span>
+                                    <br>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: normal;">Seed Provider:</span>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: bold; color: #339933;">East West</span>
+                                    <br>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: normal;">Farm Size (sqm):</span>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: bold; color: #339933;">0sqm</span>
+                                    <br>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: normal;">No. of Hills:</span>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: bold; color: #339933;">0</span>
+                                    <br>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: normal;">Sowing Date:</span>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: bold; color: #339933;">19 Oct 2021</span>
+                                        <br>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: normal;">Transplanting Date:</span>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: bold; color: #339933;">25 Oct 2021</span>
+                                        <br>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: normal;">Expected Harvest Date:</span>
+                                    <span class="x-left x-small-padding"
+                                        style="margin-left: 10px; font-weight: bold; color: #339933;">5 Jan 2022</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="x-left x-padding" style="margin-left: 10px; font-weight: normal;">Harvesting in:</span>
+                        <span class="x-left x-padding"style="margin-left: 10px; font-weight: bold; color: #339933;">49days</span>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <div class="x-padding x-left" style="margin-top: -20px; opacity: 30%;">
+            <button class="x-left x-round-large x-padding" style="background-color: #339933; color: #ffffff;">Harvest now!</button>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <div>
+        <header class="stretchable x-xlarge" style="height: 103px;">
+            <div class="x-left"
+                style="display:flex; flex-direction: row; justify-content: space-between; z-index: 3; align-items: center; margin-top: 50px; font-size: 20; width: 100%;">
+                <span class="fa fa-arrow-left x-padding"></span>
+                <b>My Crops</b>
+                <span class="x-right x-padding" style="font-size: 12; margin-top: 2px;">17 Oct 2021</span>
+            </div>
+        </header>
+        <div class="x-padding">
+            <div style="position: relative; margin-bottom: 10px;">
+                <input type="text" placeholder="Search" class="x-input x-border x-round-large x-padding x-block"
+                    style="text-indent: 12;">
+                <i class="fa fa-search" style="position: absolute; top: 12; left: 10;"></i>
+            </div>
+            <span><b>Planted Crops</b></span>
+                <button class="x-round-large x-right fa fa-plus x-padding" onclick="document.getElementById('id02').style.display='block'">Add Crop</button>
+            <div class="x-padding x-card x-round-large x-center x-block"
+                style="font-size: 12; height: 120px; margin-top: 30px; max-width: 100%;">
+                <div style="font-size: 14; font-weight: bold; max-width: 100%;">
+                    <div style="width: 100%;">
+                        <img src="eggplant.png" style="height: 50%; max-width: 100%; margin-top: 20px;" class="x-left">
+                        <span class="x-left x-small-padding" style="margin-left: 10px; font-weight: bold;">Egg Plant</span>
+                        <button class="themecolorheader x-right x-round" onclick="document.getElementById('id01').style.display='block'">Details</button>
+                        <br>
+                        <span class="x-left x-small-padding" style="margin-left: 10px; font-weight: normal;">Plant
+                            ID:</span>
+                        <span class="x-left x-small-padding" style="margin-left: 10px; font-weight: bold;">0000</span>
+                        <br>
+                        <span class="x-left x-small-padding" style="margin-left: 10px; font-weight: normal;">Status:</span>
+                        <span class="x-left x-small-padding"
+                            style="margin-left: 10px; font-weight: bold; color: #339933;">Committed</span>
+                        <br>
+                        <span class="x-left x-small-padding" style="margin-left: 10px; font-weight: normal;">Harvesting
+                            in:</span>
+                        <span class="x-left x-small-padding"
+                            style="margin-left: 10px; font-weight: bold; color: #339933;">49days</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="x-bottom x-small x-center"
+            style="display:flex; flex-direction:row; justify-content:space-around; margin-top: 10vh; padding-top: 10px; background-color: white; width: 100%;">
+            <div class="x-container x-center x-padding" style="max-width: 100%; color: #212121;">
+                <span class="x-xlarge fa fa-home"></span><br>
+                <span">Home</span>
+            </div>
+            <div class="x-container x-center x-padding" style="max-width: 100%; color: #212121;">
+                <span class="x-xlarge fa fa-bar-chart"></span><br>
+                <span>Demand</span>
+            </div>
+            <div class="x-container x-center x-padding" style="max-width: 100%; color: #212121;">
+                <span class="x-xlarge fa fa-bell"></span><br>
+                <span>Notification</span>
+            </div>
+            <div class="x-container x-center x-padding" style="max-width: 100%; color: #339933;">
+                <span class="x-xlarge fa fa-user"></span><br>
+                <span>Profile</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
