@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<title>Register | farmer</title>
+		<meta http-equiv="Content-Security-Policy" content="img-src * data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="static/css/x.css">
+		<link rel="stylesheet" href="static/css/scroll_bar.css">
+		<link rel="stylesheet" href="static/css/other.css">
+		<link rel="stylesheet" href="static/css/loader.css">
+		<link rel="stylesheet" href="static/css/css">
+		<link rel="stylesheet" href="static/css/chip.css">
+		<link rel="stylesheet" href="static/css/dropzone.css">
+		<link rel="stylesheet" href="static/css/font-awesome.min.css">
+		<script type="text/javascript" src="js/Brorn.min.js"></script>
+	</head>
+	<body>
+		<header class="x-display-container x-green x-center x-xlarge" style="height: 200px; background-image: linear-gradient(to bottom, rgba(245, 252, 252, 0.26), rgba(9, 126, 57, 0.73)),url('img8.jpg');">
+			<div class="x-display-left">
+			</div>
+			<div class="x-display-left" style="padding-top: 50px; padding-left: 170px; text-align: right; padding-right: 10px;">
+				Affordability, Accessibility, & Availability
+			</div>
+		</header>
+		<div class="x-center x-padding x-container">
+			<div>
+				<img src="img1.png" alt="AgriBloom photo" style="max-width: 30%;">
+			</div>
+			<div class="x-padding">
+				<input id="number" type="number" class="x-input x-button x-border x-round-xxlarge x-center x-padding x-block" style="width: 100%; margin-top: 20px; height: 6%;" placeholder="Enter Mobile Number">
+				<button onclick="login()" class="x-button x-round-xxlarge x-center x-padding x-green x-block x-margin-top" type="button" style="height: 6%;">
+					<b>SIGN IN</b>
+				</button>
+				<div class="x-text-green" style="font-size: 12;">
+					<div class="x-padding">
+						forgot your mobile number?
+					</div>
+					<hr style="border: 3px solid gray; border-radius: 10px; width: 50%; margin-left: 25%; margin-right: 25%;">
+					<button class="x-button x-round-xxlarge x-center x-orange x-block x-text-white" type="button" style="font-size: 15; height: 6%;">
+						<span class="fa fa-google"> </span> 
+						Log in with Google
+					</button>
+					<br>
+					<button class="x-button x-round-xxlarge x-center x-blue x-block x-text-white" type="button" style="font-size: 15; height: 6%;">
+						<span class="fa fa-facebook-square"> </span> 
+						Log in with Facebook
+					</button>
+					<div class="x-padding">
+						<span class="x-left" style="font-size: 14; font-weight: bold;">Dont have an account?</span>
+						<a href="registration profile.html">
+							<span class="x-right x-text-orange" style="font-size: 14; font-weight: bold;">SIGN UP</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="error_login" class="x-modal"  style="">
+			<div class="x-modal-content x-round-large">
+				<div class="x-container x-padding">
+					<span onclick="$ID('error_login').style.display='none' "
+					class="x-button x-display-topright x-round-large x-red fa fa-sign-out"></span>
+					<h3><b class="x-text-red">Login Failed</b></h3>
+					<span class="x-small">
+						It seems that there no records for that creadentials, please check the spelling and try again
+					</span>
+				</div><hr>
+				<div class="x-row x-center">
+					<span class="x-col l6 m6 s6 x-left x-small">Dont Have an Account?</span>
+					<span class="x-col l6 m6 s6 x-right x-small x-text-green"><a href="Sign_up_1.html">Sign Up</a></span>
+				</div>
+				<br>
+			</div>
+		</div>
+		<footer class="x-container x-block x-row x-center"  style="position: absolute; bottom: 0; left: 0;">
+			<span class="x-tiny x-text-grey">sproutlabs | 2021</span>
+		</footer>
+		<script type="text/javascript">
+			function login(){
+				//"email": "trader@gmail.com",
+				//"password": "trader@gmail.com"
+				var num_ = $ID('number').value
+				var log ={
+					"mobile_number": num_.toString(),
+					"password": "email"+num_.toString()+"@gmail.com",
+				}
+				println(log)
+				$send({
+					method : POST,
+					action : "http://agrihub.agriboost.ph/api/login/mobile/farmer",
+					// action : "http://agriboost.ph/api/login/mobile/trader",
+					data : JSON.stringify(log),
+					func : function(res){
+						var user_data = JSON.parse(res)
+						// if(Object.hasOwn(user_data, 'token')){
+						if(user_data.hasOwnProperty('token')){
+							println("Login")
+							println(user_data)
+							delete user_data.user[0].created_at
+							delete user_data.user[0].updated_at
+							delete user_data.user[0].deleted_at
+							delete user_data.user[0].fk_entity_details
+							delete user_data.user[0].user.created_at
+							delete user_data.user[0].user.profile_photo_path
+							delete user_data.user[0].user.profile_photo_url
+							goto("home.html?data="+JSON.stringify(user_data))
+						}
+						else{
+							println("ERROR")
+							$ID('error_login').style.display='block'
+						}
+
+					},
+					headers : {
+					 "Accept" : "application/json",
+					 "Content-Type" : "application/json",
+					}
+				})
+
+			}   
+		</script>
+	</body>
+</html>

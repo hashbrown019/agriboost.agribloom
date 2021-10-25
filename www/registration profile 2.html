@@ -1,0 +1,169 @@
+<html>
+	<head>
+		<title>Register | farmer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="static/css/x.css">
+		<link rel="stylesheet" href="static/css/scroll_bar.css">
+		<link rel="stylesheet" href="static/css/other.css">
+		<link rel="stylesheet" href="static/css/loader.css">
+		<link rel="stylesheet" href="static/css/css">
+		<link rel="stylesheet" href="static/css/chip.css">
+		<link rel="stylesheet" href="static/css/dropzone.css">
+		<link rel="stylesheet" href="static/css/font-awesome.min.css">
+		<!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en" /> -->
+		<script type="text/javascript" src="js/Brorn.min.js"></script>
+
+	</head>
+	<body>
+		<header class="x-green x-xlarge" style="height: 103px; font-family: work sans;">
+			<div class="x-col s2" style="padding-top: 12%;">
+				<a href="registration profile.html"><span class="fa fa-arrow-left x-padding-large"></span></a>
+				
+			</div>
+			<div class="x-col s10" style="padding-top: 12%; font-family: work sans;">
+				<b>Create an Account</b>
+				<br>
+				<span style="font-size: 12;">Personal Information</span>
+			</div>
+		</header>
+		<div class="x-container">
+			<div class="x-padding x-text-red" style="font-size: 12; font-family: work sans;">
+			*Required
+			</div>
+			<div class="x-padding">
+				<span>Farmers Organization/Association</span>
+				<span class="x-text-red">*</span>
+				<input id="org" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Farm Address (Region)</span>
+				<span class="x-text-red">*</span>
+				<input id="farm_address" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Province</span>
+				<span class="x-text-red">*</span>
+				<input id="prov" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Municipality/City</span>
+				<span class="x-text-red">*</span>
+				<input id="muni" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Barangay</span>
+				<span class="x-text-red">*</span>
+				<input id="brgy" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Farm Size (sqm)</span>
+				<span class="x-text-red">*</span>
+				<input id="farm_size" type="number" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+				<div class="x-padding" style="font-family: work sans;">
+					<span class="x-left" style="margin-top: 4;"><input id="" type="checkbox"></span>
+					<span class="x-left" style="margin-left: 5;">by joining you accept the</span>
+					<span class="x-text-green" style="margin-left: 3;">
+						<b>Privacy Policy</b></span>
+						<span style="margin-left: 3;">
+							and</span>
+							<span class="x-text-green" style="margin-left: 3;">
+								<b>Terms of use</b></span>
+				</div>
+				<button onclick="step2_login()" class="x-button x-round-xxlarge x-center x-padding x-green x-block x-margin-top" type="button" style="height: 6%; width: 100%; font-family: work sans;">
+					<b>NEXT</b>
+				</button>
+				<div class="x-padding" style="font-family: work sans;">
+					<span class="x-left">Already have an Account?</span>
+					<span class="x-right x-text-green">
+						<b>Log in</b></span>
+				</div>
+				<br><br><br><br>
+			</div>
+		</div>
+		<!-- ----------------------------------------------------------- -->
+		<div id="fin_reg" class="x-modal">
+			<div class="x-modal-content x-round-large">
+				<div class="x-container">
+					<!-- <span onclick="$ID('fin_reg').style.display='none'" class="x-button x-display-topright">&times;</span> -->
+					<div class="x-container x-round">
+						<h3>Complete your Password</h3>
+					</div>
+					<div class="x-container x-round" id="reg_finalize_code">
+						<p> We have sent a Confirmation code to your provided mobile number</p>
+						<span class="x-text-green x-small">SMS Code<b class="x-text-red">*</b></span><br>
+						<input onkeyup="code_verify(this.value)" type="number" class="field_login x-input x-border x-round-large" id="reg_code">
+					</div>
+					<br>
+					<br>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var s1 = JSON.parse(url_args['reg_data'])
+			println(s1)
+			var verif_code = $randint(9999999)
+
+			$ID('fin_reg').style.display='block'
+			verif_num()
+			function code_verify(code){
+				if(code.length > 6){
+					if(parseInt(verif_code)==parseInt(code)){
+						$ID("fin_reg").style.display = "none"
+					}
+				}
+			}
+			function verif_num(){
+				$send({
+					method : POST,
+					action : "http://agrihub.agriboost.ph/api/sms/registration/verification",
+					data : JSON.stringify({
+						'mobile_number': s1.userDetails.phone,
+						'message' : 'Hi There!, Your verification code for AgriBloom is ['+verif_code+']'
+					}),
+					a_sync : false,
+					func : function(res){
+						println(JSON.parse(res))
+					},
+					headers : {
+						"Content-Type" : "application/json"
+					},
+				})
+			}
+
+
+			function step2_login(){
+				var args = {
+					"farm_name": $ID("org").value,
+					"farm_size": $ID("farm_size").value,
+					"region":  $ID("farm_address").value,
+					"province": $ID("prov").value,
+					"city": $ID("muni").value,
+					"brgy": $ID("brgy").value,
+				}
+				s1["farmDetails"] = args
+				println(s1)
+				register_fin(s1)
+			}
+
+			function register_fin(s1){
+				$send({
+					method : POST,
+					action : "http://agrihub.agriboost.ph/api/registration/mobile",
+					data : JSON.stringify(s1),
+					func : function(res){
+						println(JSON.stringify(res))
+						alert('Registration has been requested')
+						goto("login.html")
+					},
+					headers : {
+						"Content-Type" : "application/json"
+					}
+				})
+			}
+
+			function regs(){
+				
+			}
+		</script>
+	</body>
+</html>

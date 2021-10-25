@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <title>Home | farmer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="static/css/x.css">
+		<link rel="stylesheet" href="static/css/scroll_bar.css">
+		<link rel="stylesheet" href="static/css/other.css">
+		<link rel="stylesheet" href="static/css/loader.css">
+		<link rel="stylesheet" href="static/css/css">
+		<link rel="stylesheet" href="static/css/chip.css">
+		<link rel="stylesheet" href="static/css/dropzone.css">
+		<link rel="stylesheet" href="static/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en" />
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/Variables.js"></script>
+        <script type="text/javascript" src="js/Brorn.min.js"></script>
+	
+    </head>
+    <body>
+        <header class="themecolorheader x-xlarge" style="display:flex; flex-direction:row; justify-content:space-between; background-color: #339933; width: 100%; height: 153px;">
+			<div class="x-padding" style="margin-top: 5%;">
+                <span class="fa fa-navicon x-large x-padding"></span>
+					<img src="hand.png" alt="AgriBloom photo" style="max-width: 13%; padding-bottom: 3%;">
+					<span style="font-size: 0.8em;"><b>AgriBloom</b></span>
+					<span onclick="to_login()" class="fa fa-power-off x-red x-round-large x-large x-right x-padding" style="margin-top: 2%;"></span>
+					<span onclick="to_home()" class="fa fa-home x-large x-right x-padding" style="margin-top: 2%;"></span>
+					<br>
+					<span class="x-padding"><b>Hello <span id="u_name"></span>!</b></span>
+					<br>
+					<span class="x-padding" style="font-size: 14;"> </span>
+            </div>
+			<br>
+        </header>
+		<br>
+		<div class="x-container x-row">
+            <div class="small-padding x-col s4">
+                <div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
+					<img src="crops.png" style="max-width: 100%; max-height: 200%;">
+					<br>
+					<br>
+					<div class="x-center" style="margin-top: 10px;">
+						<span style="line-height: 100%; word-wrap: break-word; margin-top: 100px;">My Crops</span>
+					</div>
+                </div>
+            </div>
+			<div class="small-padding x-col s4">
+                <div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
+					<img src="harvest.png" style="max-width: 100%;">
+					<br>
+					<br>
+					<div class="x-center" style="margin-top: 10px;">
+						<span style="line-height: 100%; word-wrap: break-word; margin-top: 100px;">My Harvest</span>
+					</div>
+                </div>
+            </div>
+			<div class="small-padding x-col s4">
+                <div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
+					<img src="delivery.png" style="max-width: 100%;">
+					<br>
+					<br>
+					<div class="x-center" style="margin-top: 10px;">
+						<span style="line-height: 100%; word-wrap: break-word; font-size: 12;">Delivery Schedule</span></div>
+                </div>
+            </div>
+        </div> 
+		<div class="x-container x-row">
+            <div class="small-padding x-col s4">
+                <div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
+					<img src="sales.png" style="max-width: 100%;">
+					<br>
+					<br>
+					<div class="x-center" style="margin-top: 10px;">
+						<span style="line-height: 100%; word-wrap: break-word; margin-top: 100px;">My Sales</span></div>
+                </div>
+            </div>
+			<div class="small-padding x-col s4">
+                <div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
+					<img src="commitment.png" style="max-width: 100%;">
+					<br>
+					<br>
+					<div class="x-center" style="margin-top: 10px;">
+						<span style="line-height: 100%; word-wrap: break-word; margin-top: 100px;">My Commitment</span></div>
+                </div>
+            </div>
+			<div class="small-padding x-col s4">
+                <div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
+					<img src="farmerguide.png" style="max-width: 100%;">
+					<br>
+					<br>
+					<div class="x-center" style="margin-top: 10px;">
+						<span style="line-height: 100%; word-wrap: break-word; font-size: 12;">Farmers Guide</span>
+					</div>
+                </div>
+            </div>
+        </div>
+		<br>
+		<span class="x-left" style="font-size: 16; font-weight: bold; font-family: worksans; margin-left: 30px;">Farm Gate Price</span>
+		<div class="x-container x-row">
+			<div class="small-padding x-col m4">
+			<div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
+				<div class="x-left x-small-padding" style="height: 80px; width: 80px; margin-top: 20px; margin-left: 10px;">
+					<img src="eggplant.png" style="max-width: 100%; max-height: 200%;">
+				</div>
+				<br>
+				<br>
+				<div class="x-left" style="font-size: 20; font-weight: bold; font-family: worksans;">
+					<span class="x-left" style="word-wrap: break-word; margin-left: 10px; margin-top: -25px;">Egg Plant</span>
+					<div class="x-row" style="margin-left: 10px;">
+                        <span class="x-left" style="font-weight: normal; font-size: 14;">Demand:</span>
+                        <span class="x-left themecolorlight" style="font-weight: bold; font-size: 14;">800kg to 1000kg</span>
+                    </div>
+					<div class="x-row" style="margin-left: 10px;">
+                        <span class="x-left" style="font-weight: normal; font-size: 14;">Price per kilo:</span>
+                        <span class="x-left themecolororange" style="font-weight: bold; font-size: 14;">₱13.55</span>
+                    </div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div style="display:flex; flex-direction:row; justify-content:space-around; margin-top: 10vh; padding-top: 10px; position: absolute; bottom: fixed; background-color: white; width: 100%;">
+			<div class="x-container x-center x-padding" style="max-width: 100%;">
+				<span class="x-xlarge fa fa-home" style="color: #339933;"></span><br>
+				<span style="color: #339933;">Home</span>
+			</div>
+			<div class="x-container x-center x-padding" onclick="to_marketdemand()" style="max-width: 100%; color: #212121;">
+				<span class="x-xlarge fa fa-bar-chart"></span><br>
+				<span class="themecolordarkgray">Demand</span>
+			</div>
+			<div class="x-container x-center x-padding" style="max-width: 100%; color: #212121;" onclick="to_comlist()">
+				<span class="x-xlarge fa fa-handshake-o"></span><br>
+				<span class="themecolordarkgray" style="margin-left: -8px;">Commited List</span>
+			</div>
+			<div class="x-container x-center x-padding" style="max-width: 100%; color: #212121;">
+				<span class="x-xlarge fa fa-user"></span><br>
+				<span class="themecolordarkgray">Profile</span>
+			</div>
+		</div>
+		<script type="text/javascript">
+			println(url_args['data'])
+			let _USER_DATA_ = JSON.parse(url_args['data'])
+			let user_id = _USER_DATA_.user[0].id
+			let TOKEN = _USER_DATA_.token
+			$ID("u_name").innerHTML = _USER_DATA_.user[0].fname
+
+			function to_login(){
+				goto("login.html")
+			}
+
+			function to_marketdemand(){
+				goto("market_demand.html?data="+url_args['data'])
+			}
+
+			function to_comlist(){
+				goto("commitmentlist.html?data="+url_args['data'])
+			}
+		</script>
+	</body>
+</html>

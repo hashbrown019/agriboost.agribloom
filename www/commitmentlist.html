@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>Commitmentlist | farmer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="static/css/x.css">
+		<link rel="stylesheet" href="static/css/scroll_bar.css">
+		<link rel="stylesheet" href="static/css/other.css">
+		<link rel="stylesheet" href="static/css/loader.css">
+		<link rel="stylesheet" href="static/css/css">
+		<link rel="stylesheet" href="static/css/chip.css">
+		<link rel="stylesheet" href="static/css/dropzone.css">
+		<link rel="stylesheet" href="static/css/font-awesome.min.css">
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/Variables.js"></script>
+		<script type="text/javascript" src="js/Brorn.min.js"></script>
+	</head>
+	<body>
+		<header class="x-green x-xlarge" style="height: 103px; font-family: work sans; max-width: 100%;">
+			<div class="x-left" style="display:flex; flex-direction: row; z-index: 3; margin-left: 10px; align-items: center; margin-top: 50px;">
+			<span onclick="go_home()" class="fa fa-arrow-left x-padding" style="max-height: 100%; max-width: 100%;"></span>
+			<b>My Commitment</b><div class="fa fa-home x-right" style="margin-left: 50px;"></div>
+			</div>
+		</header>
+		<div class="x-padding" style="max-width: 100%; max-height: 100%;">
+			<!-- <input type="text" placeholder="Search" class="x-input x-border x-round-large x-padding x-block"> -->
+		</div>
+		<div id="ls_comms">
+			
+		</div>
+		<script type="text/javascript">
+			let _USER_DATA_ = JSON.parse(url_args['data']);
+			println(_USER_DATA_);
+			let user_id = _USER_DATA_.user[0].id;
+			let TOKEN = _USER_DATA_.token;
+			
+			var com_list_struct = {
+					"user_id":user_id
+				}
+
+			$send({
+				action : 'http://agrihub.agriboost.ph/api/view/bid/to/demands',
+				data : JSON.stringify(com_list_struct),
+				func : function(res){
+					var str_view = ""
+					var ls_res = JSON.parse(res)
+					println(ls_res)
+					for (var i = 0; i < ls_res.length; i++) {
+						ls_res[i]
+
+						str_view = str_view + `
+							<div id="ls_comms" class="x-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; max-height: 100px; margin-top: 15px; max-width: 100%;">
+								<div style="font-size: 14; font-weight: bold; font-family: worksans; max-width: 100%;">
+									<div style="width: 100%;">
+										<span class="x-left x-small-padding" style="margin-left: 10px; font-weight: normal;">Commitmen</span>
+										<span class="x-left" style="color: #9ACC00;">`+ls_res[0].tracking_number+ls_res[0].id+`</span>
+										
+									</div>
+								</div>
+								<div style="font-size: 14; font-weight: bold; font-family: worksans; max-width: 100%;">
+									<div style="display:flex; width: 100%;">
+										<span class="x-left x-small-padding" style="margin-left: 10px; font-weight: normal;">Crop Type:</span>
+										<span class="x-left" style="color: #212121;">`+ls_res[1].consolidated_demands.crops[0].name+`</span>
+									</div>
+									<div style="display:flex; width: 100%;">
+										<span class="x-left x-small-padding" style="margin-left: 10px; font-weight: normal;">Status:</span>
+										<span class="x-left" style="color: #ff9a00;">Pending...</span>
+									</div>
+								</div>
+							</div>`
+					}
+					$ID('ls_comms').innerHTML = str_view
+					// 
+				},
+				headers:{
+					"Accept":"application/json",
+					"Content-Type":"application/json",
+					"Authorization" : "Bearer "+TOKEN
+				}
+			})
+
+			function go_home(){
+				goto("home.html?data="+url_args['data'])
+			}
+		</script>
+	</body>
+</html>
+			

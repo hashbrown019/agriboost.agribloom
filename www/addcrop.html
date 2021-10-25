@@ -1,0 +1,160 @@
+<html>
+	<head>
+		<title>Add Crop | farmer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="static/css/x.css">
+		<link rel="stylesheet" href="static/css/scroll_bar.css">
+		<link rel="stylesheet" href="static/css/other.css">
+		<link rel="stylesheet" href="static/css/loader.css">
+		<link rel="stylesheet" href="static/css/css">
+		<link rel="stylesheet" href="static/css/chip.css">
+		<link rel="stylesheet" href="static/css/dropzone.css">
+		<link rel="stylesheet" href="static/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/Brorn.min.js"></script>
+		<script type="text/javascript" src="js/Variables.js"></script>
+	
+	</head>
+	<body>
+		<header class="themecolorheader x-xlarge">
+			<div class="x-container-row" style="padding-top: 15%;">
+					<span class="fa fa-chevron-left x-large" style="margin-left: 5%;" onclick="to_home()"></span>
+					<span style="font-family: work sans; margin-top: 15%; margin-left: 10px;">
+				<b>Add Crop</b></span>
+				<!-- <span class="x-right x-padding" style="font-size: 12; margin-top: 1%;">12 October 2021</span> -->
+			</div>
+		</header>
+			<!-- <img src="degree.png" class="x-right x-padding">
+			<img src="rain.png" class="x-left x-padding"> -->
+			<br>
+			<br>
+		<div class="x-container" style="padding-bottom: 130px;">
+			<div class="x-row x-container" id="crop_det">
+				<span class="x-text-grey x-large"><b class="x-text-black" id="det_crop_name">----</b></span><br>
+				<span class="x-text-grey">Proposed Delivery Date: <b class="x-text-black" id="det_delivery_date">----</b></span><br>
+				<span class="x-text-grey">Price : <b class="x-text-black" id="det_price">----</b></span><br>
+				<span class="x-text-grey">Class : <b class="x-text-black" id="det_class">----</b></span><br>
+				<span class="x-text-grey">Quantity: <b class="x-text-black" id="det_qty">----</b></span><hr>
+			</div>
+			<div class="x-padding">
+				<span>Seed Provider</span>
+				<span class="x-text-red">*</span>
+				<input type="text" class="com_det x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Farm Size(sqm)</span>
+				<span class="x-text-red">*</span>
+				<input type="number" class="com_det x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Number of Hills</span>
+				<span class="x-text-red">*</span>
+				<input type="number" class="com_det x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Quantity</span>
+				<span class="x-text-red">*</span>
+				<input type="number" class="com_det x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding x-col s6">
+				<span>Sowing Date</span>
+				<span class="x-text-red">*</span>
+				<input type="date" class="com_det x-input x-border x-round-large smallpadding x-block x-left" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans; font-size: 14;">
+			</div>
+			<div class="x-padding x-col s6">
+				<span>Transplant date</span>
+				<span class="x-text-red">*</span>
+				<input type="date" class="com_det x-input x-border x-round-large smallpadding x-block x-left" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans; font-size: 12;">
+			</div>
+			<br>
+			<br>
+			<div class="x-padding" style="margin-top: 10px;">
+				<span>Upload Farm Photo</span>
+				<span class="x-text-red">*</span>
+				<input type="file" class="custom-file-input x-border x-round-large x-padding x-block x-left" style="width: 100%; height: 6%; font-family: work sans; margin-top: 10px;">
+			</div>
+			<br>
+			<br>
+			<div class="x-padding" style="margin-top: 20px;">
+				<button class="x-button x-round-xxlarge x-center x-padding x-green x-block" type="button" style="height: 7%;" onclick="comm_det()">
+				<b>ADD CROP</b>
+			</button>
+		</div>
+<!-- 			<div class="x-container x-block x-white x-center x-padding x-border" style="position: fixed;bottom: 0px; font-size: 12; margin-left: -18px;">
+				<div class="x-container x-col s3 x-center x-padding" style="max-width: 100%;">
+					<span class="x-xlarge fa fa-home lightgreen"></span><br>
+					<span class="lightgreen">Home</span>
+				</div>
+				<div class="x-container x-col s3 x-center x-padding" style="max-width: 100%;">
+					<span class="x-xlarge fa fa-bar-chart"></span><br>
+					<span class="themecolordarkgray">Demand</span>
+				</div>
+				<div class="x-container x-col s3 x-center x-padding" style="max-width: 100%;">
+					<span class="x-xlarge fa fa-bell"></span><br>
+					<span class="themecolordarkgray" style="margin-left: -8px;">Notification</span>
+				</div>
+				<div class="x-container x-col s3 x-center x-padding" style="max-width: 100%;">
+					<span class="x-xlarge fa fa-user"></span><br>
+					<span class="themecolordarkgray">Profile</span>
+				</div>
+			</div> -->
+		</div>
+	</body>
+	<script type="text/javascript">
+		let _USER_DATA_ = JSON.parse(url_args['data']);
+		let crop_data = JSON.parse(url_args['crop_data']);
+		println(_USER_DATA_);
+		let user_id = _USER_DATA_.user[0].id;
+		let TOKEN = _USER_DATA_.token;
+		println(crop_data)
+
+		$ID("det_crop_name").innerHTML = crop_data.crops[0].name
+		$ID("det_delivery_date").innerHTML = crop_data.proposed_delivery_date
+		$ID("det_price").innerHTML = crop_data.total_amount_fgp
+		$ID("det_class").innerHTML = crop_data.class
+		$ID("det_qty").innerHTML = crop_data.total_remaining_qty
+
+		function comm_det(){
+			var dets = $CLASS('com_det')
+
+			for (var i = 0; i < dets.length; i++) {
+				println(dets[i].value)
+			}
+			var com_details = {
+				"fk_consolidated_demands_id": crop_data.id,
+				"fk_users_acc_id": user_id,
+				"fk_crops_id": crop_data.fk_crops_id,
+				"qty":dets[3].value,
+				"amount_receivable":crop_data.total_amount_fgp,
+				"tracking_number":crop_data.tracking_number,
+				"seed_provider": dets[0].value,
+				"farm_size": 0.0,
+				"no_of_hills": 0,
+				"sowing_date": dets[4].value,
+				"transplanting_date": dets[5].value
+			}
+			println(com_details)
+			$send({
+				action : 'http://agrihub.agriboost.ph/api/bid/to/demands',
+				data : JSON.stringify(com_details),
+				func : function(res){
+					println(res)
+					goto("home.html?data="+url_args['data'])
+				},
+				headers:{
+					"Accept":"application/json",
+					"Content-Type":"application/json",
+					"Authorization" : "Bearer "+TOKEN
+				}
+			})
+		}
+
+		function to_home(){
+			goto("home.html?data="+url_args['data'])
+		}
+	</script>
+</html>
+

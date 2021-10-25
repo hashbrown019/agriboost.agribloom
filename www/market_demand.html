@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<head>
+		<title>Market Demand | Trader</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/Brorn.min.js"></script>
+		<script type="text/javascript" src="js/Variables.js"></script>
+
+		<link rel="stylesheet" href="css/x.css">
+		<link rel="stylesheet" href="css/scroll_bar.css">
+		<link rel="stylesheet" href="css/other.css">
+		<link rel="stylesheet" href="css/loader.css">
+		<link rel="stylesheet" href="css/css">
+		<link rel="stylesheet" href="css/chip.css">
+		<link rel="stylesheet" href="css/dropzone.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en" />
+		<style type="text/css">
+			#head_band{
+				background-image: url(./img/products/headband.png);;
+				background-repeat: no-repeat;
+				background-size: auto;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="x-sidebar x-bar-block x-border-right x-animate-left" style="display:none" id="mySidebar">
+			<span onclick="$ID('mySidebar').style.display='none' "class="x-button x-display-topright x-round-large x-red fa fa-arrow-left"></span>
+			<div class="x-green x-container x-row" style="padding-top: 50px;">
+				<div class="x-row">
+					<div class="x-col s3">
+						<img style="max-width: 110%;" src="./img/products/basket.png">
+					</div>
+					<div class="x-col s8">
+						<b id="u_name"> Name of User</b>
+					</div>
+				</div>
+				<div class="x-row">
+					<span class="fa fa-mobile"></span> <b class="x-tiny" id="u_contact">-----</b><br>
+					<span class="fa fa-calendar"></span> <b class="x-tiny" id="u_bday">-----</b>
+				</div>
+			</div><br><br>
+			<div class="x-row x-padding">
+				<span class="x-text-green x-row" onclick="to_crate()"><span class="fa fa-shopping-cart"></span> My Cart</span><br>
+				<span class="x-text-green x-row" onclick=" to_check_out()"><span class="fa fa-ticket"></span> My Orders</span>
+				<hr>
+				<span class="x-text-green x-row"><span class="fa fa-question-circle-o"></span> Help</span><hr>
+				<span class="x-text-red x-row" onclick="to_login()"><span class="fa fa-power-off"></span> Sign Out</span>
+			</div>
+		</div>
+
+        <header class="x-text-white themecolorheader x-xlarge" style="display:flex; flex-direction:row; justify-content:space-between; background-color: #339933; width: 100%; height: 153px;">
+			<div class="x-padding" style="margin-top: 5%;">
+                <span class="fa fa-navicon x-large x-padding"></span>
+					<img src="hand.png" alt="AgriBloom photo" style="max-width: 13%; padding-bottom: 3%;">
+					<span style="font-size: 0.8em;"><b>AgriBloom</b></span>
+					<span onclick="to_login()" class="fa fa-power-off x-red x-round-large x-large x-right x-padding" style="margin-top: 2%;"></span>
+					<span onclick="to_home()" class="fa fa-home x-large x-right x-padding" style="margin-top: 2%;"></span>
+					<br>
+					<span class="x-padding"><b>Hello <span id="u_name_">---</span>!</b></span>
+					<br>
+					<span class="x-padding" style="font-size: 14;"></span>
+            </div>
+			<br>
+        </header>
+		<div class="x-row">
+			<div class="x-center">
+				<br>
+				<span class="x-xlarge x-center bryan">Vegetables</span><br>
+				<span class="x-center x-tiny x-text-grey bryan">Choose and pre order</span>
+			</div>
+			<div class="x-center">
+				<input onkeyup="search_field(this.value)" class="x-input x-border x-round-xxlarge" placeholder="Search Items Here" type="" name="">	
+			</div>
+			<div id="view_all_search" class="x-row x-padding" style="display:none">
+				<div class="x-row">
+					<div id="search_res" class=" x-row x-responsive">
+					</div>
+				</div>
+			</div>
+			<div id="view_all_crops" class="x-row">
+				<div class="x-row">
+					<div class="x-container x-row">
+						<br>
+						<span class="x-left"><b>Lowland</b></span>
+						<!-- <span class="x-right x-tiny x-padding">View All</span> -->
+					</div>
+					<div id="lowland_list" class=" x-row x-responsive" style="display: flex;overflow-x:scroll:width:1000px;flex:;">
+					</div>
+
+					<div class="x-container x-row">
+						<br>
+						<span class="x-left"><b>High Land</b></span>
+						<!-- <span class="x-right x-tiny x-padding">View All</span> -->
+					</div>
+					<div id="highland_list" class=" x-row x-responsive" style="display: flex;overflow-x:scroll:width:1000px;flex:;">
+					</div>
+
+					<div class="x-container x-row">
+						<br>
+						<span class="x-left"><b>Spices</b></span>
+						<!-- <span class="x-right x-tiny x-padding">View All</span> -->
+					</div>
+					<div id="spices_list" class=" x-row x-responsive" style="display: flex;overflow-x:scroll:width:1000px;flex:;">
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br>	
+<!-- --------------------------------------------------------------------------------------------------------	 -->
+		<div id="market_demand_modal1" class="x-modal"  style="display: none;">
+			<div class="x-modal-content x-round-large x-border x-border-green">
+				<div class=" x-row">
+					<div class="x-padding x-row x-green x-round-large">
+						<div class="x-col s2">
+							<img id="c_img" class="x-round-xlarge" src="./img/products/no_prod.png" style="max-width: 100%">
+						</div>
+						<div class="x-col s10" style="padding-left: 5px;">
+							<span onclick="$ID('market_demand_modal1').style.display='none' "
+							class="x-button x-display-topright x-round-large x-red ">close</span>
+							<span class="x-large"><b id="c_prod_name" class="">Product Name</b></span> <span class="x-text-green" id="crop_id"></span><br>
+						</div>
+					</div>
+					<div id="list_dem" class="x-row">
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+		<div id="market_demand_modal2" class="x-modal" >
+			<div class="x-modal-content x-round-large">
+				<div class=" x-row">
+					<div class="x-padding x-row x-green x-round-large" style="padding-left: 5px;">
+						<span class=""><b class="">Item Added to Crate</b></span><br>
+						<span class="x-small">You have successfully added an item to your create. please proceed from the following below</span>
+					</div>
+					<div class="x-row x-padding-large">		
+						<button class="x-button x-round-large x-green x-block" onclick="go_to_crate()">
+							Go to your Crate <span class="fa fa-shopping-cart"></span>
+						</button><br>
+						<button class="x-button x-round-large x-orange x-block"  onclick="to_market_demand()">
+							Continue Pre-Ordering <span class="fa fa-shopping-bag"></span>
+						</button>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		let _USER_DATA_ = JSON.parse(url_args['data']);
+		println(_USER_DATA_);
+		let user_id = _USER_DATA_.user[0].id;
+		let TOKEN = _USER_DATA_.token;
+
+		let CROP_DATA
+
+		function to_check_out(){
+			goto("check_out.html?data="+url_args['data'])
+		}
+		function to_crate(){
+			goto("crate.html?data="+url_args['data'])
+		}
+		function to_login(){
+			goto("login.html")
+		}
+		function to_home(){
+			goto("home.html?data="+url_args['data'])
+		}
+
+		function search_field(search_item){
+			println(search_item.length)
+			if(search_item.length > 1){
+				println("on SEARCH")
+				$ID('view_all_search').style.display = 'block';
+				$ID('view_all_crops').style.display = 'none';
+				var res = CROP_DATA
+				LISTED_CROPS = res
+				// println(res)
+				var TAGS = ""
+				for (var i = 0; i < res.length; i++) {
+					var item = res[i]
+					// println(res[i])
+					var pname = item.name +" "+ item.crop_production_model.harvesting + "" + item.seasonality
+					var lowpname = pname.toLowerCase()
+					if(lowpname.includes(search_item.toLowerCase())){ 
+						try{
+							TAGS =  TAGS+`
+							<div class="x-padding">
+								<div class="x-container x-card x-round-large" >
+									<div class='x-container x-padding'>
+										<div class="x-col s4 x-center x-padding">
+											<img src="./img/products/crops/`+item.id+`.png" style="max-width:100%;" alt='`+item.name+`'>
+										</div><br>
+										<div class='x-col s8 x-tiny'>
+											<b id="prod_name" class="x-row  " style=";">`+item.name+`</b><br>
+											<span>Price per `+item.unit+`: <b>`+item.crop_pricing.fgp+`</b> </span><br>
+											<button onclick="add_to_create( `+i+`,'`+item.name+`')" class="x-btn x-green x-tiny x-block x-round-large">View Demand</button>
+										</div>
+									</div>
+								</div>
+							</div>`
+						}
+						catch(err){
+							println(err)
+						}
+					}
+				}
+				$ID('search_res').innerHTML = TAGS
+			}else{
+				println("IDle")
+				$ID('view_all_crops').style.display = 'block';
+				$ID('search_res').innerHTML = '';
+			}
+		}
+
+
+		get_market_demand()
+		function get_market_demand(){
+			$send({
+				action : "http://agrihub.agriboost.ph/api/fetch/available_crops",
+				method : GET,
+				func : function(res){
+					create_list(JSON.parse(res))
+				},
+				headers:{
+					"Accept":"application/json",
+					"Content-Type":"application/json",
+					"Authorization" : "Bearer "+TOKEN
+				}
+			})
+		}
+
+		function commit_demand(id_com){
+			var res = replaceAlls(id_com,"||",'"')
+			println(JSON.parse(res))
+			goto("addcrop.html?crop_data="+res+"&data="+url_args['data'])
+			// $ID("card_demand_"+id_com).style.display='none'
+
+			// $send({
+			// 	method : POST,
+			// 	action : "http://agrihub.agriboost.ph/api/bid/to/demands",
+			// 	// action : "http://agriboost.ph/api/login/mobile/trader",
+			// 	data : JSON.stringify({
+			// 		"fk_consolidated_demands_id": "1",
+			// 		"fk_users_acc_id": "1",
+			// 		"qty":"5"
+			// 	}),
+			// 	func : function(res){
+			// 		var user_data = JSON.parse(res)
+			// 		// if(Object.hasOwn(user_data, 'token')){
+
+			// 	},
+			// 	headers : {
+			// 	 "Accept" : "application/json",
+			// 	 "Content-Type" : "application/json",
+			// 	}
+			// })
+		}
+
+		function get_all_demand(crp_id){
+			var tag_dem = ''
+			$ID("list_dem").innerHTML = `<h4 class='x-center'> Loading . . .</h4>`
+			$send({
+				action : "http://agrihub.agriboost.ph/api/view/all/demands",
+				method : POST,
+				func : function(res){
+					var crops = JSON.parse(res)
+					for (var i = 0; i < crops.length; i++) {
+						println(crops[i])
+						var demand = crops[i]
+						if(demand.fk_crops_id == crp_id){
+							tag_dem = tag_dem + `<div  id='card_demand_`+demand.id+`' class="x-padding">
+								<div class="x-row x-card x-padding x-border-dashed x-border-green">
+									<div class='x-row'>
+										<div class="x-col s8">
+											<span class="x-Large">Class: <b>`+demand.class+`</b></span><br>
+											<span class="x-tiny">Name : <b>`+demand.crops[0].name+`</b></span><br>
+											<span class="x-tiny">Price : P <b>`+demand.crops[0].fgp+` /`+demand.crops[0].unit+`</b></span><br>
+											<span class="x-tiny">Remaining Demand : <b>`+demand.total_remaining_qty+`</b></span><br>
+											<span class="x-tiny">Delivery Date : <b>`+demand.proposed_delivery_date+`</b></span><br>
+										</div>
+										<div class="x-col s4">
+											<input	class='x-input x-border x-round' placeholder="Input QTY"><br>
+											<button class="x-btn x-round-large x-block x-green" onclick="commit_demand('`+replaceAlls(JSON.stringify(demand),'"',"||")+`')">
+												Commit
+											</button>
+										</div>
+									</div>
+									<span class="x-tiny">Tracking # : <b>`+demand.tracking_number+`</b></span><br>
+								</div>
+							</div>`
+						}
+					}
+					println(tag_dem.length +"----------")
+					if(tag_dem.length ==0){
+						$ID("list_dem").innerHTML = `<h4 class='x-center'> No Demands Posted</h4>`
+					}else{
+						$ID("list_dem").innerHTML = tag_dem
+					}
+				},
+				headers:{
+					"Accept":"application/json",
+					"Content-Type":"application/json",
+					"Authorization" : "Bearer "+TOKEN
+				}
+			})
+		}
+function replaceAlls(str, match, replacement){
+   return str.split(match).join(replacement);
+}
+
+		function add_to_create(item,name){
+			var crop_selected = LISTED_CROPS[item]
+			$ID('c_img').src='img/products/crops/'+(item+1)+".png"
+			$ID('c_prod_name').innerHTML=name
+			$ID('market_demand_modal1').style.display='block'
+			get_all_demand(crop_selected.id)
+
+		}
+
+
+		let LISTED_CROPS = undefined
+		function create_list(res){
+			CROP_DATA = res
+			LISTED_CROPS = res
+			var lowland = ""
+			var highland = ""
+			var spices = ""
+			var TAGS = ""
+			for (var i = 0; i < res.length; i++) {
+				var item = res[i]
+				// println(res[i])
+				try{
+					// var img_ = IMG[parseInt(item.id)-1]
+					TAGS =  `
+					<div class="x-padding x-col l7 m7 s7">
+						<div class="x-container x-card x-round-large" >
+							<b id="prod_name" class="x-tiny" style="line-height:3px;overflow:hidden;white-space: nowrap;">`+item.name+`</b><br>
+							<div class="x-center x-padding">
+								<img src="./img/products/crops/`+item.id+`.png" style="height:120px;width:120px;" alt='`+item.name+`'>
+							</div><br>
+							<div class='x-tiny'>
+								<span>Price per `+item.unit+`: <b>`+item.crop_pricing.fgp+`</b> </span><br>
+							</div>
+							<div class="x-container x-row x-padding">
+								<button onclick="add_to_create(`+i+`,'`+item.name+`')" class="x-btn x-green x-tiny x-block x-round-large">View Details</button>
+							</div>
+						</div>
+					</div>`
+					if(item.crop_type=="LOWLAND VEGETABLES"){lowland = lowland + TAGS}
+					if(item.crop_type=="HIGHLAND VEGETABLES"){highland = highland + TAGS}
+					if(item.crop_type=="SPICES"){spices = spices + TAGS}
+				}
+				catch(err){
+					println(err)
+				}
+			}
+			$ID("u_name_").innerText = _USER_DATA_.user[0].fname;
+
+			$ID('lowland_list').innerHTML = lowland
+			$ID('highland_list').innerHTML = highland
+			$ID('spices_list').innerHTML = spices
+		}
+
+
+	</script>
+</html>

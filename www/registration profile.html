@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<title>Register | farmer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="static/css/x.css">
+		<link rel="stylesheet" href="static/css/scroll_bar.css">
+		<link rel="stylesheet" href="static/css/other.css">
+		<link rel="stylesheet" href="static/css/loader.css">
+		<link rel="stylesheet" href="static/css/css">
+		<link rel="stylesheet" href="static/css/chip.css">
+		<link rel="stylesheet" href="static/css/dropzone.css">
+		<link rel="stylesheet" href="static/css/font-awesome.min.css">
+		<!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Work+Sans:300,400,600,700&amp;lang=en" /> -->
+		<script type="text/javascript" src="js/Brorn.min.js"></script>
+
+	</head>
+	<body>
+		<header class="x-green x-xlarge" style="height: 103px; font-family: work sans;">
+			<div class="x-col s2" style="padding-top: 12%;">
+				<a href="login.html"><span class="fa fa-arrow-left x-padding-large"></span></a>
+			</div>
+			<div class="x-col s10" style="padding-top: 12%; font-family: work sans;">
+				<b>Create an Account</b>
+				<br>
+				<span style="font-size: 12;">Personal Information</span>
+			</div>
+		</header>
+		<div class="x-container">
+			<div class="x-padding x-text-red" style="font-size: 12; font-family: work sans;">
+			*Required
+			</div>
+			<div class="x-padding">
+				<span>First Name</span>
+				<span class="x-text-red">*</span>
+				<input id="fname" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Middle Name</span>
+				<input id="mname" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Last Name</span>
+				<span class="x-text-red">*</span>
+				<input id="lname" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Birthday</span>
+				<span class="x-text-red">*</span>
+			<input id="bday" type="date" class="x-input x-border x-round-large x-padding x-block x-left" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<br><br><br>
+				<span style="padding-top: 10;">Email Address</span>
+				<span class="x-text-red">*</span>
+				<input id="email" type="text" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+			</div>
+			<div class="x-padding">
+				<span>Gender</span>
+				<span class="x-text-red">*</span>
+				<select id="gender" class="x-input x-border" style="height: 48.72;margin-top: 4%;">
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+				</select>
+			</div>
+			<div class="x-padding">
+				<span>Contact Number</span>
+				<span class="x-text-red">*</span>
+				<input id="number" type="number" class="x-input x-border x-round-large x-padding x-block" style="width: 100%; margin-top: 10px; height: 6%; font-family: work sans;">
+				<button onclick="step1_login()" class="x-button x-round-xxlarge x-center x-padding x-green x-block x-margin-top" type="button" style="height: 6%; width: 100%; font-family: work sans; text-transform: none;">
+					<b>NEXT</b>
+				</button>
+				<div class="x-padding" style="font-family: work sans;">
+					<span class="x-left">Already have an Account?</span>
+					<span class="x-right x-text-green">
+						<b>Log in</b></span>
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
+			</div>
+		</div> 
+		<script type="text/javascript">
+			function step1_login(){
+                var num_ = $ID('number').value
+
+				var args = {
+					// "email" : $ID("email").value,
+					"email" : "email"+num_.toString()+"@gmail.com",
+					"password" : "email"+num_.toString()+"@gmail.com",
+					"user_type" : "Farmer",
+					"terms" : true,
+					"farmDetails" : {},
+					"userDetails" : {
+						"fname" : $ID("fname").value,
+						"lname" : $ID("lname").value,
+						"sex" : $ID("gender").value,
+						"bday" : $ID("bday").value,
+						"phone" : $ID("number").value
+					}
+				}
+				println(args)
+				goto("registration profile 2.html?reg_data="+JSON.stringify(args))
+			}
+		</script>
+	</body>
+</html>
+
+

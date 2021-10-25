@@ -1,0 +1,17 @@
+        
+        
+        
+<div class="x-container x-row">
+            <div class="x-padding x-col s4">
+                <div class="x-padding x-card x-round-large">
+                    My Crafts
+                    <img src="img34.png" style="max-width: 100%;">
+                </div>
+            </div>
+            <div class="x-padding x-col s4">
+                <div class="x-padding x-card x-round-large">
+                    My Crafts
+                    <img src="img34.png" style="max-width: 100%;">
+                </div>
+            </div>
+        </div> 
