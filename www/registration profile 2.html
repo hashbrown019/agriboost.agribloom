@@ -91,7 +91,7 @@
 					<div class="x-container x-round" id="reg_finalize_code">
 						<p> We have sent a Confirmation code to your provided mobile number</p>
 						<span class="x-text-green x-small">SMS Code<b class="x-text-red">*</b></span><br>
-						<input onkeyup="code_verify(this.value)" type="number" class="field_login x-input x-border x-round-large" id="reg_code">
+						<input onkeyup="code_verify(this.value)" type="text" class="field_login x-input x-border x-round-large" id="reg_code">
 					</div>
 					<br>
 					<br>
@@ -101,14 +101,19 @@
 		<script type="text/javascript">
 			var s1 = JSON.parse(url_args['reg_data'])
 			println(s1)
-			var verif_code = $randint(9999999)
-
+			// var verif_code = $randint(9999999)
+			var verif_code = gen_code(7)
+			println(verif_code)
 			$ID('fin_reg').style.display='block'
 			verif_num()
+
 			function code_verify(code){
 				if(code.length > 6){
-					if(parseInt(verif_code)==parseInt(code)){
+					if(verif_code==code){
 						$ID("fin_reg").style.display = "none"
+					}
+					else{
+						println(verif_code +" : "+code)
 					}
 				}
 			}

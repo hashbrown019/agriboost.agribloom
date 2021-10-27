@@ -19,7 +19,8 @@
     <body>
         <header class="themecolorheader x-xlarge" style="display:flex; flex-direction:row; justify-content:space-between; background-color: #339933; width: 100%; height: 153px;">
 			<div class="x-padding" style="margin-top: 5%;">
-                <span class="fa fa-navicon x-large x-padding"></span>
+                    <span class="fa fa-navicon x-large x-padding" onclick="under_dev()"></span>
+
 					<img src="hand.png" alt="AgriBloom photo" style="max-width: 13%; padding-bottom: 3%;">
 					<span style="font-size: 0.8em;"><b>AgriBloom</b></span>
 					<span onclick="to_login()" class="fa fa-power-off x-red x-round-large x-large x-right x-padding" style="margin-top: 2%;"></span>
@@ -32,7 +33,7 @@
 			<br>
         </header>
 		<br>
-		<div class="x-container x-row">
+		<div class="x-container x-row" onclick="under_dev()">
             <div class="small-padding x-col s4">
                 <div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
 					<img src="crops.png" style="max-width: 100%; max-height: 200%;">
@@ -63,7 +64,7 @@
                 </div>
             </div>
         </div> 
-		<div class="x-container x-row">
+		<div class="x-container x-row" onclick="under_dev()">
             <div class="small-padding x-col s4">
                 <div class="small-padding x-card x-round-large x-center" style="font-size: 12; font-family: work sans; height: 120px; width: auto;">
 					<img src="sales.png" style="max-width: 100%;">
@@ -117,7 +118,43 @@
 			</div>
 			</div>
 		</div>
-		<div style="display:flex; flex-direction:row; justify-content:space-around; margin-top: 10vh; padding-top: 10px; position: absolute; bottom: fixed; background-color: white; width: 100%;">
+
+		<div class=" x-center x-block" style="width:100vw">
+			<div class=" x-container x-center x-green" style=" z-index: 1;position: fixed;bottom: 0vh;width:100vw">
+				<div class="x-col s3 x-container">
+					<span class="x-xlarge x-padding fa fa-home" ></span><br>
+					<!-- <span class="x-padding x-small ">Home</span> -->
+				</div>
+				<div class="x-col s3 x-container" onclick="to_marketdemand()">
+					<span class="x-xlarge x-padding fa fa-bar-chart"></span><br>
+					<!-- <span class="x-padding x-small ">Demands</span> -->
+				</div>
+				<div class="x-col s3 x-container">
+					<span class="x-xlarge x-padding fa fa-handshake-o"  onclick="to_comlist()"></span><br>
+					<!-- <span class="x-padding x-small ">Home</span> -->
+				</div>
+				<div class="x-col s3 x-container" onclick="under_dev()">
+					<span class="x-xlarge x-padding fa fa-bell"></span><br>
+					<!-- <span class="x-padding x-small ">Logs</span> -->
+				</div>
+			</div>
+		</div>
+		<div id="under_cons" class="x-modal"  style="display: none;">
+			<div class="x-modal-content x-round-large x-border x-border-green">
+				<span onclick="$ID('under_cons').style.display='none' "class="x-button x-display-topright x-round-large x-red ">close</span>
+				<div class="x-center x-padding x-row"><br>
+					<div class="x-container">
+						<img src="./img/dev.png" style="max-width: 100%">
+					</div>
+					<div class="x-container">
+						<h3 class="x-xxlarge">Get Excited!</h3>
+						<p class="x-large">This feature is comming soon.</p>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+<!-- 		<div style="display:flex; flex-direction:row; justify-content:space-around; margin-top: 10vh; padding-top: 10px; position: absolute; bottom: fixed; background-color: white; width: 100%;">
 			<div class="x-container x-center x-padding" style="max-width: 100%;">
 				<span class="x-xlarge fa fa-home" style="color: #339933;"></span><br>
 				<span style="color: #339933;">Home</span>
@@ -134,7 +171,7 @@
 				<span class="x-xlarge fa fa-user"></span><br>
 				<span class="themecolordarkgray">Profile</span>
 			</div>
-		</div>
+		</div> -->
 		<script type="text/javascript">
 			println(url_args['data'])
 			let _USER_DATA_ = JSON.parse(url_args['data'])
@@ -153,6 +190,11 @@
 			function to_comlist(){
 				goto("commitmentlist.html?data="+url_args['data'])
 			}
+
+		function under_dev(){
+			$ID('under_cons').style.display='block'
+		}
+
 		</script>
 	</body>
 </html>
